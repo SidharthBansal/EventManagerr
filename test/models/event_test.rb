@@ -5,8 +5,12 @@ class EventTest < ActiveSupport::TestCase
 
   def setup
     @user = users(:batman)
-    @event = @user.events.build(title: "House Warmer", body: "It's going to be great!",
-                                location: "My house", date: Time.zone.now)
+    @event = @user.events.build(title: "House Warmer",
+                                body: "Hi guys! It my party soon and you're all invited!
+                                      I think we're going to have a great time.
+                                      Let me know if you're coming",
+                                location: "My house",
+                                date: Time.zone.now)
   end
 
   test "should be valid" do
