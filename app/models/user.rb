@@ -11,9 +11,9 @@ class User < ApplicationRecord
                         dependent: :destroy,
                         source: :host
 
- belongs_to :invites,  class_name: "Event",
-                       foreign_key: "guest_id",
-                       dependent: :destroy
+ belongs_to :invite,  class_name: "Event",
+                      foreign_key: "guest_id",
+                      dependent: :destroy
 
 
 
