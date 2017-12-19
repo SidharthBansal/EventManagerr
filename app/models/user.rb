@@ -15,5 +15,4 @@ class User < ApplicationRecord
  has_many :guests, through: :invitations, source: :guest
  has_many :hosts, through: :invites, source: :host
 
-
 end
