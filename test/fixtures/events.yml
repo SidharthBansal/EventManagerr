@@ -1,17 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+party:
   host_id: 1
   guest_id: 1
-  title: MyString
-  body: MyText
-  location: MyString
-  date: 2017-12-18 19:15:03
+  title: House Party
+  body: It's going to be great! You should all come!
+  location: My house
+  date: 2017-12-31 23:00:00
 
 two:
   host_id: 1
   guest_id: 1
-  title: MyString
-  body: MyText
+  title:
+  body:
   location: MyString
-  date: 2017-12-18 19:15:03
+  date: 2018-01-18 19:15:03

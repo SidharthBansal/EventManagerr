@@ -6,13 +6,34 @@
                    Brand
                 </a>
             </li>
-            <li>
-                <a href="#">Home</a>
-            </li>
+
+
+            <% if !user_signed_in? %>
+              <li><%= link_to "Log in", new_user_session_path %></li>
+              <li><%= link_to "Sign up", new_user_registration_path %></li>
+            <% end %>
+              <li>
+                  <a href="#">Home</a>
+              </li>
+            <% if user_signed_in? %>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li class="dropdown-header"></li>
+                  <li><a href="#">Profile</a></li>
+                  <li><a href="#">See events</a></li>
+                  <li><a href="#">Create an event</a></li>
+                  <li><a href="#">See my created events</a></li>
+                </ul>
+              </li>
+              <li><%= link_to "Sign Out", destroy_user_session_path %></li>
+            <% end %>
+
             <li>
                 <a href="#">About</a>
             </li>
             <li>
+
                 <a href="#">Events</a>
             </li>
             <li>
@@ -38,5 +59,6 @@
             <li>
                 <a href="https://twitter.com/maridlcrmn">Follow me</a>
             </li>
+
         </ul>
     </nav>
