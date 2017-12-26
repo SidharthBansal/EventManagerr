@@ -1,2 +1,20 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<% provide(:title, "Home") %>
+<h1>EventsManager</h1>
+
+<% @events.each do |event| %>
+
+
+<div class="event">
+  <h1><%= event.title %></h1>
+
+  <h4><%= event.body %></h4>
+  <h4>
+    <%= event.date.to_s.split(" ")[0].split("-").reverse.join("/") %> || @
+    <%= event.location %>
+    <%= link_to "Show", event_path(event.id), class: "pull-right" %> </h4>
+</div>
+
+<% end %>
+
+
+<%= link_to "API",  api_v1_events_path %>
