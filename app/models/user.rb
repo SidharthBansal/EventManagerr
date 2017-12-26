@@ -14,5 +14,4 @@ class User < ApplicationRecord
                          dependent: :destroy,
                          source: :guests
 
-
 end
