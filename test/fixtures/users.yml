@@ -5,5 +5,6 @@
 # below each fixture, per the syntax in the comments below
 #
 batman:
+  id: 1
   username: batman
   email: batman@example.com
