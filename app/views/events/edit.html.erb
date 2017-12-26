@@ -1,0 +1,6 @@
+<% provide(:title, "Update #{@event.title}") %>
+<% provide(:button_text, "Update") %>
+
+<h1> Update <%= @event.title %></h1><br />
+
+<%= render 'events/event_form.html.erb' %>

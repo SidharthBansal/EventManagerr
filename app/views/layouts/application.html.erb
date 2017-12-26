@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>EventManager</title>
+    <title><%= yield(:title) %> | EventManager</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -26,9 +27,12 @@
                       <div class="col-lg-8 col-lg-offset-2">
                         <% if notice %>
                           <div class="alert alert-success"><%= notice %></div>
-                        <% end %>
-                        <% if alert %>
+                        <% elsif alert %>
                           <div class="alert alert-danger"><%= alert %></div>
+                        <% else %>
+                          <% flash.each do |message_type, message| %>
+                            <div class="alert alert-<%= message_type %>"><%= message %></div>
+                          <% end %>
                         <% end %>
 
                         <%= yield %>
