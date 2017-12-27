@@ -13,7 +13,7 @@
   password_confirmation: "foobar"
 )
 
-5.times do
+50.times do
   Event.create(
     host_id: @user.id,
     title: Faker::Pokemon.name,

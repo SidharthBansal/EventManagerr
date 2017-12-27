@@ -12,9 +12,7 @@
               <li><%= link_to "Log in", new_user_session_path %></li>
               <li><%= link_to "Sign up", new_user_registration_path %></li>
             <% end %>
-              <li>
-                  <a href="#">Home</a>
-              </li>
+              <li><%= link_to "Home", root_path %></li>
             <% if user_signed_in? %>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <span class="caret"></span></a>
@@ -51,13 +49,7 @@
               </ul>
             </li>
             <li>
-                <a href="#">Services</a>
-            </li>
-            <li>
                 <a href="#">Contact</a>
-            </li>
-            <li>
-                <a href="https://twitter.com/maridlcrmn">Follow me</a>
             </li>
 
         </ul>

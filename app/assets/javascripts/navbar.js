@@ -1,5 +1,5 @@
 
-$(document).ready(function () {
+$(document).on('ready page:load', function() {
   var trigger = $('.hamburger'),
       overlay = $('.overlay'),
      isClosed = false;
