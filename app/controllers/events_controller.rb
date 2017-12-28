@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   before_action :logged_in_user, only: [:show, :new, :create, :edit, :destroy]
 
   def index
-    @events = Event.all
+    @events = Event.paginate(page: params[:page], per_page: 12)
   end
 
   def show
