@@ -2,17 +2,36 @@
 <h1>EventsManager</h1>
 
 <% @events.each_with_index do |event, index| %>
-  <div class="col-md-4">
-    <div class="event">
-      <h4><%= event.title %></h4>
-      <h5><%= resume(event.body) %></h5>
-      <div class="details">
+  <div class="event col-md-3 col-md-offset-1" style="height: 274px;">
+    <div class="row title-bar">
+      <div class="col-md-12">
         <h4>
-          <%= event.date.to_s.split(" ")[0].split("-").reverse.join("/") %> || @
-          <%= event.location %>
-          <%= link_to "Show", event_path(event.id), class: "pull-right" %>
+          <%= event.title %>
+          <%= link_to "Show", event_path(event.id) %>
         </h4>
       </div>
     </div>
-  </div>
+    <div class="row content">
+      <% if event.picture? %>
+        <div class="event-image col-xs-5">
+          <%= image_tag event.picture.url %>
+        </div>
+        <div class="body col-xs-6 col-xs-offset-1">
+          <p><%= resume(event.body) %></p>
+        </div>
+      <% else %>
+        <div class="body col-xs-12">
+          <p><%= resume(event.body) %></p>
+        </div>
+      <% end %>
+      </div>
+      <div class="row details">
+        <div class="col-md-6">
+          <h4>
+            <%= event.date.to_s.split(" ")[0].split("-").reverse.join("/") %>
+            @ <%= event.location %>
+          </h4>
+        </div>
+      </div>
+    </div>
 <% end %>

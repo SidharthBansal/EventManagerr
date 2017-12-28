@@ -5,30 +5,47 @@
 
 .event {
   position: relative;
-  height: 250px;
+  background-color: white;
   border: 3px solid #5A6351;
   border-radius: 5px;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
   padding: 0 7px 0 7px;
-  margin: 10px 0 10px 0;
+  margin: 10px 0 20px 0;
   h1, h2, h4 {
     font-family: 'Bungee', cursive;
     margin-top: 10px;
   }
-  .btn {
-    margin-bottom: 10px;
+  .content {
+    margin: 15px 0 10px 0;
   }
-  .image {
-    width: 100%;
+  .body {
+    margin-top: 5px;
+  }
+
+  .event-image {
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 0;
+  }
+  img {
+    max-width: 100%;
+    max-height: 100%;
   }
   .details {
     position: absolute;
     bottom: 0;
   }
   a {
+    position: absoulute;
+    top: 0;
     margin-right: 7px;
+    float: right;
   }
   a:hover {
     text-decoration: none;
-    color: green;
+    color: gray;
+  }
+  .btn {
+    margin-bottom: 10px;
   }
 }

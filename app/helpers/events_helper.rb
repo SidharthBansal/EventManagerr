@@ -1,6 +1,6 @@
 module EventsHelper
 
   def resume(content)
-    content.split()[0...10].join(" ") + "..."
+    content.split()[0...15].join(" ") + "..."
   end
 end

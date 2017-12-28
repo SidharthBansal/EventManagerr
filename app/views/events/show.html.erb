@@ -2,30 +2,56 @@
 
 
 
-<div class="event">
-  <h1><%= @event.title %></h1>
-  <%= image_tag @event.picture.url, class: "image" if @event.picture? %>
-  <h4><%= @event.body %></h4>
-  <h4>
-    <%= @event.date.to_s.split(" ")[0].split("-").reverse.join("/") %> || @
-    <%= @event.location %>
-    <%= link_to "Edit", edit_event_path(@event.id), class: "pull-right" %> ||
-    <%= link_to "Delete", event_path(@event.id), method: :delete,
-                                                 data: { confirm: "Are you sure?" },
-                                                 class: "pull-right" %></h4>
-
-  <h3> Guests </h3>
-  <p>
-    <% @event_guests.each do |guest| %>
-      <%= guest.username %><%= "," unless guest == @event_guests.last %>
+<div class="event container">
+  <div class="row title-bar">
+    <div class="col-md-12">
+      <h2><%= @event.title %>
+        <%= link_to "Delete", event_path(@event.id), method: :delete,
+                                                    data: { confirm: "Are you sure?" },
+                                                    class: "pull-right" %>
+        <%= link_to "Edit", edit_event_path(@event.id), class: "pull-right" %>
+      </h2>
+    </div>
+  </div>
+  <div class="row content">
+    <% if @event.picture? %>
+      <div class="event-image col-md-4">
+        <%= image_tag @event.picture.url %>
+      </div>
     <% end %>
-  </p>
+    <div class="body col-md-8">
+      <p><%= @event.body %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h4 class="pull-right">
+        <%= @event.date.to_s.split(" ")[0].split("-").reverse.join("/") %> || @
+        <%= @event.location %>
+      </h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h2> Guests </h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <p>
+        <% @event_guests.each do |guest| %>
+          <%= guest.username %><%= "," unless guest == @event_guests.last %>
+        <% end %>
+      </p>
+    </div>
+  </div>
 </div>
 
 
+
 <% if @event.guests.exists?(current_user.id) %>
-  <div class="event">
-    <h3> Leave </h3>
+  <div class="event container">
+    <h2> Leave </h2>
     <%= form_for(:add, url: events_remove_guest_path)  do |f| %>
 
       <%= f.hidden_field :guest_id, value: current_user.id %>
@@ -36,15 +62,17 @@
     <% end %>
   </div>
 <% else %>
-  <div class="event">
-  <h3> Join </h3>
-    <%= form_for(:add, url: events_add_guest_path)  do |f| %>
+  <div class="event container">
+    <div class="col-md-12">
+      <h2> Join </h2>
+      <%= form_for(:add, url: events_add_guest_path)  do |f| %>
 
-      <%= f.hidden_field :guest_id, value: current_user.id %>
-      <%= f.hidden_field :event_id, value: @event.id %>
+        <%= f.hidden_field :guest_id, value: current_user.id %>
+        <%= f.hidden_field :event_id, value: @event.id %>
 
-      <%= f.submit "Join", class: "form-control btn btn-success" %>
+        <%= f.submit "Join", class: "form-control btn btn-success" %>
 
-    <% end %>
+      <% end %>
+    </div>
   </div>
 <% end %>

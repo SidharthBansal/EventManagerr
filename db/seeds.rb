@@ -17,9 +17,8 @@
   Event.create(
     host_id: @user.id,
     title: Faker::Pokemon.name,
-    body: Faker::Lorem.sentence(10),
+    body: Faker::Lorem.sentence(50),
     location: Faker::Address.street_address,
     date: Faker::Date.forward(100)
-
   )
 end
