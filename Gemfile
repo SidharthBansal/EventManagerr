@@ -17,6 +17,7 @@ gem 'fog',                     '1.40.0'
 gem 'will_paginate',           '3.1.5'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'devise'
+gem 'trix'
 
 
 group :development, :test do
