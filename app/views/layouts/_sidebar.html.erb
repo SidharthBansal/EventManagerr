@@ -2,55 +2,30 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
         <ul class="nav sidebar-nav">
             <li class="sidebar-brand">
-                <a href="#">
-                   Brand
-                </a>
+                <%= link_to "EventManager", root_path %>
             </li>
-
-
             <% if !user_signed_in? %>
               <li><%= link_to "Log in", new_user_session_path %></li>
               <li><%= link_to "Sign up", new_user_registration_path %></li>
             <% end %>
-              <li><%= link_to "Home", root_path %></li>
+              <li><%= link_to "Events", root_path %></li>
             <% if user_signed_in? %>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
                   <li class="dropdown-header"></li>
-                  <li><a href="#">Profile</a></li>
-                  <li><a href="#">See events</a></li>
-                  <li><a href="#">Create an event</a></li>
+                  <li><%= link_to "Profile", user_path(current_user.id) %></li>
+                  <li><%= link_to "Create an event", new_event_path %></li>
                   <li><a href="#">See my created events</a></li>
                 </ul>
               </li>
               <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
             <% end %>
-
-            <li>
-                <a href="#">About</a>
-            </li>
-            <li>
-
-                <a href="#">Events</a>
-            </li>
-            <li>
-                <a href="#">Team</a>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Works <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li class="dropdown-header">Dropdown heading</li>
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
             <li>
                 <a href="#">Contact</a>
             </li>
-
+            <li>
+                <a href="#">About</a>
+            </li>
         </ul>
     </nav>

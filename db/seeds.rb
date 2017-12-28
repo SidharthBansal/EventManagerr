@@ -13,6 +13,16 @@
   password_confirmation: "foobar"
 )
 
+20.times do
+  name = Faker::Name.first_name
+  User.create(
+    username: name,
+    email: "#{name}@example.com",
+    password: "foobar",
+    password_confirmation: "foobar"
+  )
+end
+
 50.times do
   Event.create(
     host_id: @user.id,

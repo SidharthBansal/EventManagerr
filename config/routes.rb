@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post 'events/remove_guest'
 
   devise_for :users
+  resources :users, only: [:index, :show]
 
    # API
    namespace :api, path: "",
