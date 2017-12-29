@@ -16,7 +16,7 @@
                   <li class="dropdown-header"></li>
                   <li><%= link_to "Profile", user_path(current_user.id) %></li>
                   <li><%= link_to "Create an event", new_event_path %></li>
-                  <li><a href="#">See my created events</a></li>
+                  <li><%= link_to "See my created events.", created_events_path(current_user.id) %></li>
                 </ul>
               </li>
               <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>

@@ -7,6 +7,11 @@
     <%= f.label :username %><br />
     <%= f.text_field :username, autofocus: true, class: "form-control" %>
   </div>
+  
+  <div class="field">
+    <%= f.label :picture %>
+    <%= f.file_field :picture, class: "form-control" %><br />
+  </div>
 
   <div class="field">
     <%= f.label :email %><br />

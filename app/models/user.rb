@@ -15,5 +15,7 @@ class User < ApplicationRecord
                          source: :guests
 
   has_and_belongs_to_many :events
+  
+  mount_uploader :picture, PictureUploader
 
 end

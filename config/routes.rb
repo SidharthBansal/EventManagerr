@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users, only: [:index, :show]
+  get 'users/:id/createdevents', to: 'users#created_events', as: 'created_events'
 
    # API
    namespace :api, path: "",
