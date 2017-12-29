@@ -36,13 +36,15 @@
       <h2> Guests </h2>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      <p>
-        <% @event_guests.each do |guest| %>
-          <%= guest.username %><%= "," unless guest == @event_guests.last %>
-        <% end %>
-      </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <p>
+          <% @event_guests.each do |guest| %>
+            <%= guest.username %><%= "," unless guest == @event_guests.last %>
+          <% end %>
+        </p>
+      </div>
     </div>
   </div>
 </div>

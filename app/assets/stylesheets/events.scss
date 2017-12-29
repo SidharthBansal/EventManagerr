@@ -12,7 +12,6 @@
   padding: 0 7px 0 7px;
   margin: 10px 0 20px 0;
   h1, h2, h3, h4 {
-    font-family: 'Bungee', cursive;
     margin: 10px 0 0 0;
   }
   .content {
@@ -37,6 +36,7 @@
   .details {
     position: absolute;
     bottom: 0;
+    left: 0;
     margin: 0 0 10px 0;
   }
   a {
