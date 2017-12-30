@@ -1,8 +1,8 @@
 <% provide(:title, "#{@event.title}") %>
 
 
-
-<div class="event container">
+<!-- Event -->
+<div class="event container col-md-9">
   <div class="row title-bar">
     <div class="col-md-12">
       <h2><%= @event.title %>
@@ -49,32 +49,28 @@
   </div>
 </div>
 
-
-
-<% if @event.guests.exists?(current_user.id) %>
-  <div class="event container">
+<!-- Leave/Join button -->
+<div class="event container col-md-2 col-md-offset-1">
+  <% if @event.guests.exists?(current_user.id) %>
+  
     <h2> Leave </h2>
     <%= form_for(:add, url: events_remove_guest_path)  do |f| %>
-
+  
       <%= f.hidden_field :guest_id, value: current_user.id %>
       <%= f.hidden_field :event_id, value: @event.id %>
-
+  
       <%= f.submit "Leave", class: "form-control btn btn-success" %>
-
-    <% end %>
-  </div>
-<% else %>
-  <div class="event container">
-    <div class="col-md-12">
-      <h2> Join </h2>
-      <%= form_for(:add, url: events_add_guest_path)  do |f| %>
-
-        <%= f.hidden_field :guest_id, value: current_user.id %>
-        <%= f.hidden_field :event_id, value: @event.id %>
-
-        <%= f.submit "Join", class: "form-control btn btn-success" %>
-
+  
       <% end %>
-    </div>
-  </div>
-<% end %>
+  <% else %>
+    <h2> Join </h2>
+    <%= form_for(:add, url: events_add_guest_path)  do |f| %>
+  
+      <%= f.hidden_field :guest_id, value: current_user.id %>
+      <%= f.hidden_field :event_id, value: @event.id %>
+  
+      <%= f.submit "Join", class: "form-control btn btn-success" %>
+  
+    <% end %>
+  <% end %>
+</div>

@@ -1,16 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 party:
-  host_id: 1
-  guest_id: 1
+  host_id: 123456
   title: House Party
-  body: It's going to be great! You should all come!
+  body: Its going to be great! You should all come! Its going to be great! You should all come! Its going to be great! You should all come!
   location: My house
   date: 2017-12-31 23:00:00
 
 two:
   host_id: 1
-  guest_id: 1
   title:
   body:
   location: MyString

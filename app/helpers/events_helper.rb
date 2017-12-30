@@ -1,6 +1,8 @@
 module EventsHelper
-
+  require "html_truncator"
+  
   def resume(content)
-    content.split()[0...15].join(" ") + "..."
+    HTML_Truncator.truncate(content, 15)
   end
+
 end

@@ -17,11 +17,11 @@
           <%= image_tag event.picture.url %>
         </div>
         <div class="body col-xs-6 col-md-6">
-          <p><%= resume(event.body) %></p>
+          <p><%= resume(event.body).html_safe %></p>
         </div>
       <% else %>
         <div class="body col-xs-12">
-          <p><%= resume(event.body) %></p>
+          <p><%= resume(event.body).html_safe %></p>
         </div>
       <% end %>
       </div>

@@ -18,6 +18,7 @@ gem 'will_paginate',           '3.1.5'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'devise'
 gem 'trix'
+gem 'html_truncator'
 
 
 group :development, :test do
