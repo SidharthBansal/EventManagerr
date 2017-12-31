@@ -20,7 +20,7 @@
       </div>
     <% end %>
     <div class="body col-md-8">
-      <p><%= @event.body %></p>
+      <p><%= @event.body.html_safe %></p>
     </div>
   </div>
   <div class="row">
@@ -73,4 +73,10 @@
   
     <% end %>
   <% end %>
+</div>
+<div class="event comments container col-md-12">
+  <%= render "comments/comment_form" %>
+  
+  <%= render @event.comments %>
+
 </div>

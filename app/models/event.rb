@@ -2,6 +2,8 @@ class Event < ApplicationRecord
 
   belongs_to :host, class_name: "User"
   has_and_belongs_to_many :guests, class_name: "User"
+  has_many :comments
+  
   
   default_scope { order(created_at: :desc) }
 

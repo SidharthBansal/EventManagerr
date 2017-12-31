@@ -9,6 +9,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @event_guests = @event.guests
+    @comments = @event.comments
   end
 
   def new
