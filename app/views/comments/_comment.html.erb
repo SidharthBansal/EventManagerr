@@ -1,7 +1,11 @@
 
 <div class="comment row">
   <div class="col-md-12">
-      <h5><%= comment.user.username %></h5>
+      <h5><%= comment.user.username %>
+        <% if comment.user.id == current_user.id %>
+          <%= link_to "Delete", event_comment_path(@event.id, comment.id), method: :delete, data: { confirm: "Are you sure?" } %>
+        <% end %>
+      </h5>
       <p><%= comment.body %></p>
       <p class="pull-right">Posted <%= time_ago_in_words(comment.created_at) %> ago</p>
   </div>

@@ -2,7 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.comment {
-    border-bottom: 1px solid gray;
-    margin-top: 10px;
+.comments {
+    form {
+        margin-top: 10px;
+        .btn {
+            margin-top: 10px;
+        }
+    }
+    .comment {
+        border-bottom: 1px solid gray;
+        margin: 10px 0 10px 0;
+    }
 }
