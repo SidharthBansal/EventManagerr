@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'events#index'
 
   resources :events, except: [:index] do
-      resources :comments, except: [:show]
+      resources :comments, only: [:create, :destroy]
   end
   post 'events/add_guest'
   post 'events/remove_guest'

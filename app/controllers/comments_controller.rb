@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
     
     before_action :logged_in_user
+    before_action :right_user, only: [:destroy]
 
     def create
         @event = Event.find(params[:event_id])
@@ -33,5 +34,15 @@ class CommentsController < ApplicationController
             flash[:warning] = "You must be logged in to see your profile."
             redirect_to new_user_session_path
         end
-     end 
+    end
+     
+     
+    def right_user
+        event = Event.find(params[:event_id])
+        comment = Comment.find(params[:id])
+        if current_user.id != comment.user_id
+            flash[:warning] = "You can only delete the comments you created!"
+            redirect_to event
+        end
+    end
 end
