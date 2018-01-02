@@ -39,7 +39,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <p>
+        <p id ="guests">
           <% @event_guests.each do |guest| %>
             <%= guest.username %><%= "," unless guest == @event_guests.last %>
           <% end %>
@@ -54,7 +54,7 @@
   <% if @event.guests.exists?(current_user.id) %>
   
     <h2> Leave </h2>
-    <%= form_for(:add, url: events_remove_guest_path)  do |f| %>
+    <%= form_for(:add, url: events_remove_guest_path, remote: true)  do |f| %>
   
       <%= f.hidden_field :guest_id, value: current_user.id %>
       <%= f.hidden_field :event_id, value: @event.id %>
@@ -64,7 +64,7 @@
       <% end %>
   <% else %>
     <h2> Join </h2>
-    <%= form_for(:add, url: events_add_guest_path)  do |f| %>
+    <%= form_for(:add, url: events_add_guest_path, remote: true)  do |f| %>
   
       <%= f.hidden_field :guest_id, value: current_user.id %>
       <%= f.hidden_field :event_id, value: @event.id %>
@@ -82,10 +82,10 @@
   </div>
   <div class="comments row">
     <div class="col-md-12">
-      <h2><%= pluralize(@comments.count, "Comment") %></h2>
+      <h2 id="comment-count"><%= pluralize(@comments.count, "Comment") %></h2>
     </div>
     <div class="row">
-      <div class="col-md-8 col-md-offset-2">
+      <div id="comments-body" class="col-md-8 col-md-offset-2">
         <%= render @event.comments %>
       </div>
     </div>

@@ -1,7 +1,7 @@
 
   <div class="row">
     <div class="col-md-12">
-      <%= form_for [@event, Comment.new] do |f| %>
+      <%= form_for [@event, Comment.new], remote: true do |f| %>
       
         <%= f.label :Write_a_comment %>
         <%= f.text_area :body, class: "form-control" %>

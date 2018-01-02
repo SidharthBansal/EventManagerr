@@ -8,10 +8,17 @@ class CommentsController < ApplicationController
         @comment = @event.comments.build(comment_params)
         @comment.user_id = current_user.id
         if @comment.save
-            flash[:success] = "Your comment was submitted successfully"
-            redirect_to @event
+            respond_to do |format|
+                format.html  do
+                    flash[:success] = "Wohho!"
+                    redirect_to @event
+                end
+                format.js do
+                    flash.now[:success] = "Ajax"
+                end
+            end
         else
-            flash[:warning] = "Your comment must have a body! "
+            flash[:warning] = "Your comment must have a body!"
             redirect_to @event
         end
     end
@@ -20,7 +27,10 @@ class CommentsController < ApplicationController
         @event = Event.find(params[:event_id])
         Comment.find(params[:id]).destroy
         flash[:success] = "Comment successfully deleted"
-        redirect_to @event
+        respond_to do |format|
+            format.html { redirect_to @event }
+            format.js
+        end
     end
     
     private

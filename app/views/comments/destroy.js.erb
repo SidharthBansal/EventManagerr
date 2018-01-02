@@ -1,0 +1,2 @@
+$("#comment-count").html('<%= pluralize(@event.comments.count, "Comment") %>');
+$("#comments-body").html('<%= escape_javascript(render @event.comments) %>');

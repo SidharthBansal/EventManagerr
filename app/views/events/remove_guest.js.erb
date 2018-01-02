@@ -1,0 +1,1 @@
+$("#guests").html('<%= @event.guests.map { |guest| guest.username }.join(", ") %>')
