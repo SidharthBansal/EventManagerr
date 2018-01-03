@@ -1,0 +1,22 @@
+<% if @event.guests.exists?(current_user.id) %>
+
+    <h2> Leave </h2>
+    <%= form_for(:add, url: events_remove_guest_path, remote: true)  do |f| %>
+    
+      <%= f.hidden_field :guest_id, value: current_user.id %>
+      <%= f.hidden_field :event_id, value: @event.id %>
+    
+      <%= f.submit "Leave", class: "form-control btn btn-success" %>
+    
+    <% end %>
+<% else %>
+    <h2> Join </h2>
+    <%= form_for(:add, url: events_add_guest_path, remote: true)  do |f| %>
+    
+      <%= f.hidden_field :guest_id, value: current_user.id %>
+      <%= f.hidden_field :event_id, value: @event.id %>
+    
+      <%= f.submit "Join", class: "form-control btn btn-success" %>
+    
+    <% end %>
+<% end %>

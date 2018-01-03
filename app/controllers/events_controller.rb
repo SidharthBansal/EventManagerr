@@ -54,8 +54,11 @@ class EventsController < ApplicationController
     if !@event.guests.exists?(@guest.id)
       @event.add_guest(@guest)
       respond_to do |format|
-          format.html { redirect_to @event }
-          format.js 
+          format.html do
+            flash.now[:success] = "You joined #{@event.title}"
+            redirect_to @event
+          end
+          format.js { flash.now[:success] = "You joined #{@event.title}" } 
       end
     else
       flash[:warning] = "You have already joined the event!"
@@ -69,8 +72,11 @@ class EventsController < ApplicationController
     if @event.guests.exists?(@guest.id)
       @event.remove_guest(@guest)
       respond_to do |format|
-                format.html { redirect_to @event }
-                format.js 
+          format.html do
+            flash.now[:success] = "You left #{@event.title}"
+            redirect_to @event
+          end
+          format.js { flash.now[:success] = "You left #{@event.title}" } 
       end
     else
       flash[:warning] = "Guest wasn't found."

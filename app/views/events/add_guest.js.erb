@@ -1,1 +1,3 @@
-$("#guests").html('<%= @event.guests.map { |guest| guest.username }.join(", ") %>')
+$("#join-leave").html('<%= escape_javascript(render 'events/join_leave') %>');
+$("#flash").html('<%= escape_javascript(render 'layouts/flash') %>');
+$("#guests").html('<%= @event.guests.map { |guest| guest.username }.join(", ") %>');

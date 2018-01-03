@@ -40,9 +40,7 @@
     <div class="row">
       <div class="col-md-12">
         <p id ="guests">
-          <% @event_guests.each do |guest| %>
-            <%= guest.username %><%= "," unless guest == @event_guests.last %>
-          <% end %>
+          <%= @event_guests.map { |guest| guest.username }.join(", ") %>
         </p>
       </div>
     </div>
@@ -50,30 +48,11 @@
 </div>
 
 <!-- Leave/Join button -->
-<div class="event container col-md-2 col-md-offset-1">
-  <% if @event.guests.exists?(current_user.id) %>
-  
-    <h2> Leave </h2>
-    <%= form_for(:add, url: events_remove_guest_path, remote: true)  do |f| %>
-  
-      <%= f.hidden_field :guest_id, value: current_user.id %>
-      <%= f.hidden_field :event_id, value: @event.id %>
-  
-      <%= f.submit "Leave", class: "form-control btn btn-success" %>
-  
-      <% end %>
-  <% else %>
-    <h2> Join </h2>
-    <%= form_for(:add, url: events_add_guest_path, remote: true)  do |f| %>
-  
-      <%= f.hidden_field :guest_id, value: current_user.id %>
-      <%= f.hidden_field :event_id, value: @event.id %>
-  
-      <%= f.submit "Join", class: "form-control btn btn-success" %>
-  
-    <% end %>
-  <% end %>
+<div id="join-leave" class="event container col-md-2 col-md-offset-1">
+  <%= render 'events/join_leave' %>
 </div>
+
+<!-- Comments -->
 <div class="event comments container col-md-12">
   <div class="row">
     <div class="col-md-12">
