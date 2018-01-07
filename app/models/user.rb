@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, :omniauth_providers => [:facebook]
+  devise :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :hosted_events,  class_name: "Event",
                             foreign_key: "host_id",
