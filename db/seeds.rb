@@ -11,7 +11,8 @@
   username: "Ninja",
   email: "ninja@email.com",
   password: "foobar",
-  password_confirmation: "foobar"
+  password_confirmation: "foobar",
+  confirmed_at: DateTime.now
 )
 # Create test user events
 50.times do

@@ -19,6 +19,8 @@ gem 'bootstrap-will_paginate', '1.0.0'
 gem 'devise'
 gem 'trix'
 gem 'html_truncator'
+gem 'figaro'
+gem 'omniauth-facebook'
 
 
 group :development, :test do
