@@ -8,6 +8,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @events_joined = @user.events.paginate(page: params[:page], per_page: 5)
+    @incoming = FriendRequest.where(friend: current_user)
+    @outgoing = current_user.friend_requests
   end
   
   def created_events

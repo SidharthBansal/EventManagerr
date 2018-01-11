@@ -13,6 +13,8 @@
       <h1><%= @user.username %></h1>
       <h4><%= @user.email %></h4>
       <h5><%= link_to "Edit profile", edit_user_registration_path(@user.id) %></h5>
+      <%= render 'friend_requests/requests_sent_recieved' %>
+      <%= render 'friend_requests/send_request' %>
     </div>
     <div class="col-sm-8">
       <h2>Events Joined</h2>
@@ -53,4 +55,6 @@
       <%= will_paginate @events_joined %>
     </div>
   </div>
+
+      
 </div>

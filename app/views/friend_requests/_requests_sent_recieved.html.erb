@@ -1,0 +1,5 @@
+ <p><%= link_to "#{ pluralize(@outgoing.count, 'friend request' ) } sent",
+ user_friend_requests_path(current_user.id)  %></p>
+ 
+ <p><%= link_to "#{ pluralize(@incoming.count, 'friend request') } received",
+ user_friend_requests_path(current_user.id) %></p>

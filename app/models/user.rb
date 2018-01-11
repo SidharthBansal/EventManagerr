@@ -19,9 +19,20 @@ class User < ApplicationRecord
   
   has_many :comments
   
+  has_many :friend_requests, dependent: :destroy
+  has_many :pending_friends, through: :friend_requests, foreign_key: 'friend_id', source: :friend
+  
+  has_many :friendships, dependent: :destroy
+  has_many :friends, through: :friendships
+  
+  
   mount_uploader :picture, PictureUploader
   
   validate :picture_size
+  
+  def remove_friend(friend)
+    current_user.friends.destroy(friend)
+  end
   
   def self.from_omniauth(auth)
       where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
