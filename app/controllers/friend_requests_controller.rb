@@ -8,8 +8,7 @@ class FriendRequestsController < ApplicationController
     end
     
     def create
-        friend = User.find(params[:user_id])
-        @friend_request = current_user.friend_requests(friend_id: friend.id)
+        @friend_request = current_user.friend_requests.build(friend_id: params[:user_id])
         if @friend_request.save
             flash[:success] = 'Friend request sent'
             redirect_to user_path(current_user.id)
@@ -34,6 +33,10 @@ class FriendRequestsController < ApplicationController
     
     
     private
+    
+        def friend_request_params
+            params.require(:friend_request).permit(:poo)
+        end
     
         def set_friend_request
             @friend_request = FriendRequest.find(params[:id])

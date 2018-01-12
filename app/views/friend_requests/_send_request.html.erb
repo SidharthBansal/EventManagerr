@@ -1,5 +1,6 @@
 
 
 <%= form_for [@user, FriendRequest.new] do |f| %>
+    <%= f.hidden_field :poo,  value: @user.id %>
     <%= f.submit 'Add Friend', class: 'btn btn-primary form-control' %>
 <% end %>

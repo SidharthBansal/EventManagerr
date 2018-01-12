@@ -14,6 +14,15 @@
   password_confirmation: "foobar",
   confirmed_at: DateTime.now
 )
+
+User.create(
+  username: "Samurai",
+  email: "samurai@email.com",
+  password: "foobar",
+  password_confirmation: "foobar",
+  confirmed_at: DateTime.now
+  )
+  
 # Create test user events
 50.times do
   Event.create(

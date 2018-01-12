@@ -20,7 +20,7 @@ class User < ApplicationRecord
   has_many :comments
   
   has_many :friend_requests, dependent: :destroy
-  has_many :pending_friends, through: :friend_requests, foreign_key: 'friend_id', source: :friend
+  has_many :pending_friends, through: :friend_requests, source: :friend
   
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
