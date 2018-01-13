@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, :omniauth_providers => [:facebook]
+  
+  before_create :add_default_profile_pic
 
   has_many :hosted_events,  class_name: "Event",
                             foreign_key: "host_id",
@@ -48,6 +50,11 @@ class User < ApplicationRecord
       if picture.size > 5.megabytes
         errors.add(:picture, "should be less than 5MB")
       end
+    end
+    
+    #before create add default profile pic
+    def add_default_profile_pic
+      self.picture = 'profile-pic.jpg'
     end
 
 end
