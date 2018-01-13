@@ -1,1 +1,9 @@
 <h1>Hello I'm the  INdex</h1>
+
+<h3>Friend requests</h3>
+<% @incoming.each do |request| %>
+  <%= request.user.picture %>
+  <%= request.user.username %>
+  <%= link_to 'Add', user_friend_request_path(current_user.id, request.user.id), method: :put %>
+<% end %>
+

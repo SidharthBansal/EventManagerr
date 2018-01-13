@@ -1,6 +1,6 @@
 class FriendRequestsController < ApplicationController
     
-    before_action :set_friend_request, except: [:index, :create]
+    before_action :set_friend_request, except: [:index, :create, :update]
     
     def index
         @incoming = FriendRequest.where(friend: current_user)
@@ -19,26 +19,16 @@ class FriendRequestsController < ApplicationController
     end
     
     def update
-        @friend_request.accept
-        head :no_content
-    end
-    
-    def destroy
-        @friend_request.destroy
-        head :no_content
-    end
-    
-    
-    
-    
-    
-    private
-    
-        def friend_request_params
-            params.require(:friend_request).permit(:poo)
+        @user = User.find(params[:user_id])
+        @friend = User.find(params[:id])
+        @friendship = @user.friendships.build(friend: @friend)
+        if @friendship.save 
+            @friend.friend_requests.find_by(friend: @user).destroy
+            flash[:success] = "Added #{@friend.username} to friends."
+            redirect_to user_path(current_user.id)
+        else
+            flash[:warning] = "brap"
         end
-    
-        def set_friend_request
-            @friend_request = FriendRequest.find(params[:id])
-        end
+    end
+
 end

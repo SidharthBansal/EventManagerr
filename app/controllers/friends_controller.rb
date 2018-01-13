@@ -1,19 +1,16 @@
 class FriendsController < ApplicationController
-  before_action :set_friend, only: :destroy
   
   def index
     @friends = current_user.friends
   end
 
   def destroy
-    current_user.remove_friend(@friend)
-    head :no_content
-    
+    @user = User.find(params[:user_id])
+    @friend = User.find(params[:id])
+    @user.friendships.find_by(friend_id: @friend.id).destroy
+    flash[:success] = "Unfriended #{@friend.username}"
+    redirect_to @friend
   end
   
-  private
-  
-    def set_friend
-      @friend = current_user.friends.find(params[:id])
-    end
+
 end

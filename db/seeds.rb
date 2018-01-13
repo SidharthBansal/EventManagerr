@@ -65,3 +65,9 @@ end
     )
 
 end
+
+500.times do 
+  user    = User.find(Random.rand(1..21))
+  friend  = User.find(Random.rand(1..21))
+  FriendRequest.new(user: user, friend: friend)
+end

@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   resources :users, only: [:index, :show] do
-      resources :friend_requests, only: [:index, :create]
+      resources :friend_requests, only: [:index, :create, :update]
+      resources :friends, only: [:destroy]
   end
   get 'users/:id/createdevents', to: 'users#created_events', as: 'created_events'
   
