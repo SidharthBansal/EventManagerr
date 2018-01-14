@@ -66,8 +66,7 @@ end
 
 end
 
-500.times do 
-  user    = User.find(Random.rand(1..21))
+20.times do 
   friend  = User.find(Random.rand(1..21))
-  FriendRequest.new(user: user, friend: friend)
+  @user.friendships.create(friend_id: friend.id)
 end

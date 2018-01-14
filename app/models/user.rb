@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, :omniauth_providers => [:facebook]
   
-  before_create :add_default_profile_pic
+  before_validation :add_default_profile_pic
 
   has_many :hosted_events,  class_name: "Event",
                             foreign_key: "host_id",
@@ -54,7 +54,7 @@ class User < ApplicationRecord
     
     #before create add default profile pic
     def add_default_profile_pic
-      self.picture = 'profile-pic.jpg'
+      self.picture = Rails.root.join("app/assets/images/profile-pic.jpg").open
     end
 
 end

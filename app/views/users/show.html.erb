@@ -12,51 +12,20 @@
       </div>
       <h1><%= @user.username %></h1>
       <h4><%= @user.email %></h4>
-      <h5><%= link_to "Edit profile", edit_user_registration_path(@user.id) %></h5>
-      <%= render 'friend_requests/requests_sent_recieved' %>
-      <%= render 'friend_requests/send_request' %>
-      <%= render 'friends/unfriend' %>
+      <% if @user == current_user %>
+        <h5><%= link_to "Edit profile", edit_user_registration_path(@user.id) %></h5>
+        <%= render 'friend_requests/requests_sent_recieved' %>
+      <% else %>
+        <% if current_user.friends.include?(@user) %>
+          <%= render 'friends/unfriend' %>
+        <% else %>
+          <%= render 'friend_requests/send_request' %>
+        <% end %>
+      <% end %>
       <%= render 'friends/friends' %>
     </div>
     <div class="col-sm-8">
-      <h2>Events Joined</h2>
-        <% @events_joined.each do |event| %>
-        <div class="event col-md-12" style="height: 274px;">
-          <div class="row title-bar">
-            <div class="col-xs-10">
-              <h4><%= event.title %></h4>
-            </div>
-            <div class="col-xs-2">
-              <h4><%= link_to "Show", event_path(event.id) %></h4>
-            </div>
-          </div>
-          <div class="row content">
-            <% if event.picture? %>
-              <div class="event-image col-xs-4">
-                <%= image_tag event.picture.url %>
-              </div>
-              <div class="body col-xs-6 col-xs-offset-1">
-                <p><%= resume(event.body).html_safe %></p>
-              </div>
-            <% else %>
-              <div class="body col-xs-12">
-                <p><%= resume(event.body).html_safe %></p>
-              </div>
-            <% end %>
-            </div>
-            <div class="row details">
-              <div class="col-xs-12">
-                <h4>
-                  <%= event.date.to_s.split(" ")[0].split("-").reverse.join("/") %>
-                  @ <%= event.location %>
-                </h4>
-              </div>
-            </div>
-          </div>
-      <% end %>
-
-      <%= will_paginate @events_joined %>
-
+      <%= render 'events/events_joined' %>
     </div>
   </div>
 

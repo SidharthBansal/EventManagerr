@@ -1,3 +1,18 @@
 // Place all the styles related to the Friends controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.friends-profile-container {
+  padding: 0;
+}
+
+.friends-profile-pic {
+  width: 32% !important;
+  margin: 0 0 5px 0;
+}
+
+.friends-link {
+  float: right;
+  margin: 0 10px 0 0;
+}

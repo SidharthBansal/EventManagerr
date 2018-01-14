@@ -1,1 +1,11 @@
-<%= pluralize(@friends.count, 'friend') %>
+
+
+<div class="friends-profile-container ">
+  <h4><%= pluralize(@friends.count, 'friend') %></h4>
+  <% @friends[0..8].each do |friendship| %>
+    <%= link_to (friendship.friend) do %>
+      <%= image_tag(friendship.friend.picture, class: 'friends-profile-pic') %>
+    <% end %>
+  <% end %>
+  <%= link_to "See all", user_friends_path(@user.id), class: 'friends-link' %> 
+</div>

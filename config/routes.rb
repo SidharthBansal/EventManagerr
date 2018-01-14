@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show] do
       resources :friend_requests, only: [:index, :create, :update]
-      resources :friends, only: [:destroy]
+      resources :friends, only: [:index, :destroy]
   end
   get 'users/:id/createdevents', to: 'users#created_events', as: 'created_events'
   

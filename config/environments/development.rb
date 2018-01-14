@@ -58,4 +58,5 @@ Rails.application.configure do
 
   # Allows to run another domain in localhost
   config.action_dispatch.tld_length = 0
+  
 end
